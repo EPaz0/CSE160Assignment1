@@ -61,11 +61,11 @@ function handleDrawEvent()
 
     let x1 = parseFloat(document.getElementById("v1x").value);
     let y1 = parseFloat(document.getElementById("v1y").value);
-    let v1 = new Vector3([x1, y1]); 
+    let v1 = new Vector3([x1, y1, 0.0]); 
 
     let x2 = parseFloat(document.getElementById("v2x").value);
     let y2 = parseFloat(document.getElementById("v2y").value);
-    let v2 = new Vector3([x2, y2]); 
+    let v2 = new Vector3([x2, y2, 0.0]); 
 
 
     drawVector(v1, "red") 
@@ -86,15 +86,15 @@ function handleDrawOperationEvent()
 
     let x1 = parseFloat(document.getElementById("v1x").value);
     let y1 = parseFloat(document.getElementById("v1y").value);
-    let v1 = new Vector3([x1, y1]); 
+    let v1 = new Vector3([x1, y1, 0]); 
 
     let x2 = parseFloat(document.getElementById("v2x").value);
     let y2 = parseFloat(document.getElementById("v2y").value);
-    let v2 = new Vector3([x2, y2]); 
+    let v2 = new Vector3([x2, y2, 0]); 
 
 
-    drawVector(v1, "red") 
-    drawVector(v2, "blue") 
+    drawVector(v1, "red");
+    drawVector(v2, "blue");
 
     let operation = document.getElementById("opertaion-select").value;
     let scalar = parseFloat(document.getElementById("scalar").value);
@@ -102,24 +102,38 @@ function handleDrawOperationEvent()
     if(operation == "add")
     {
         let v3 = v1.add(v2);
-        drawVector(v3, "green")
+        drawVector(v3, "green");
     }else if(operation == "sub")
     {
         let v3 = v1.sub(v2);
-        drawVector(v3, "green")
+        drawVector(v3, "green");
     }else if(operation == "mult")
     {
         let v3 = v1.mul(scalar);
-        drawVector(v3, "green")
+        drawVector(v3, "green");
 
         let v4 = v2.mul(scalar);
-        drawVector(v4, "green")
+        drawVector(v4, "green");
     }else if(operation == "div")
     {
         let v3 = v1.div(scalar);
-        drawVector(v3, "green")
+        drawVector(v3, "green");
 
         let v4 = v2.div(scalar);
-        drawVector(v4, "green")
+        drawVector(v4, "green");
+    }else if(operation == "magnitude")
+    {
+        let m1 = v1.magnitude();
+        console.log("Magnitude of v1:", m1);
+
+        let m2 = v2.magnitude();
+        console.log("Magnitude of v2:", m2);
+    }else if(operation == "normalize")
+    {
+        let v3 = v1.normalize();
+        drawVector(v3, "green");
+
+        let v4 = v2.normalize();
+        drawVector(v4, "green");
     }
 }
