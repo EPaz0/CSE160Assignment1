@@ -135,5 +135,24 @@ function handleDrawOperationEvent()
 
         let v4 = v2.normalize();
         drawVector(v4, "green");
+    } else if(operation == "angle")
+    {
+        let angle = angleBetween(v1, v2);
+        console.log("Angle between v1 and v2: ", angle, "degrees");
     }
+}
+function angleBetween(v1, v2)
+{
+    let dot = Vector3.dot(v1,v2);
+    let m1 = v1.magnitude();
+    let m2 = v2.magnitude();
+    
+    let cosTheta = dot / (m1 * m2);
+
+    // Clamp just in case due to floating-point precision
+    cosTheta = Math.max(-1, Math.min(1, cosTheta));
+
+    let angleRad = Math.acos(cosTheta);       
+    let angleDeg = angleRad * (180 / Math.PI); 
+    return angleDeg;
 }
