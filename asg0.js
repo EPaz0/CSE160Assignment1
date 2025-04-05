@@ -59,9 +59,15 @@ function handleDrawEvent()
     ctx.fillStyle = 'rgba(black)'; // Set a blue color
     ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill a rectangle with the color
 
-    let x = parseFloat(document.getElementById("v1x").value);
-    let y = parseFloat(document.getElementById("v1y").value);
-    let v = new Vector3([x, y, 0.0]); // z = 0 for 2D
+    let x1 = parseFloat(document.getElementById("v1x").value);
+    let y1 = parseFloat(document.getElementById("v1y").value);
+    let v1 = new Vector3([x1, y1]); 
 
-    drawVector(v, "red") 
+    let x2 = parseFloat(document.getElementById("v2x").value);
+    let y2 = parseFloat(document.getElementById("v2y").value);
+    let v2 = new Vector3([x2, y2]); 
+
+
+    drawVector(v1, "red") 
+    drawVector(v2, "blue") 
 }
