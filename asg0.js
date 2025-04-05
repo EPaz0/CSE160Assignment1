@@ -71,3 +71,55 @@ function handleDrawEvent()
     drawVector(v1, "red") 
     drawVector(v2, "blue") 
 }
+
+function handleDrawOperationEvent()
+{
+    var canvas = document.getElementById('example');
+    var ctx = canvas.getContext('2d');
+    
+    //clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Remake the background black
+    ctx.fillStyle = 'rgba(black)'; // Set a blue color
+    ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill a rectangle with the color
+
+    let x1 = parseFloat(document.getElementById("v1x").value);
+    let y1 = parseFloat(document.getElementById("v1y").value);
+    let v1 = new Vector3([x1, y1]); 
+
+    let x2 = parseFloat(document.getElementById("v2x").value);
+    let y2 = parseFloat(document.getElementById("v2y").value);
+    let v2 = new Vector3([x2, y2]); 
+
+
+    drawVector(v1, "red") 
+    drawVector(v2, "blue") 
+
+    let operation = document.getElementById("opertaion-select").value;
+    let scalar = parseFloat(document.getElementById("scalar").value);
+
+    if(operation == "add")
+    {
+        let v3 = v1.add(v2);
+        drawVector(v3, "green")
+    }else if(operation == "sub")
+    {
+        let v3 = v1.sub(v2);
+        drawVector(v3, "green")
+    }else if(operation == "mult")
+    {
+        let v3 = v1.mul(scalar);
+        drawVector(v3, "green")
+
+        let v4 = v2.mul(scalar);
+        drawVector(v4, "green")
+    }else if(operation == "div")
+    {
+        let v3 = v1.div(scalar);
+        drawVector(v3, "green")
+
+        let v4 = v2.div(scalar);
+        drawVector(v4, "green")
+    }
+}
