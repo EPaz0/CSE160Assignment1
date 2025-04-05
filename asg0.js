@@ -13,9 +13,14 @@ function main() {
     ctx.fillStyle = 'rgba(black)'; // Set a blue color
     ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill a rectangle with the color
 
+    
+    //Part2
+    /*
     let v1 = new Vector3([2.25,2.25]);
     console.log('v1:', v1);
     drawVector(v1, "red");
+    */
+
 }
 
 function drawVector(v, color) 
@@ -40,5 +45,23 @@ function drawVector(v, color)
     ctx.strokeStyle = color;
     ctx.lineWidth = 2;
     ctx.stroke();
+}
 
+function handleDrawEvent() 
+{
+    var canvas = document.getElementById('example');
+    var ctx = canvas.getContext('2d');
+    
+    //clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Remake the background black
+    ctx.fillStyle = 'rgba(black)'; // Set a blue color
+    ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill a rectangle with the color
+
+    let x = parseFloat(document.getElementById("v1x").value);
+    let y = parseFloat(document.getElementById("v1y").value);
+    let v = new Vector3([x, y, 0.0]); // z = 0 for 2D
+
+    drawVector(v, "red") 
 }
